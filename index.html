@@ -547,7 +547,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">Pertanyaan yang Sering Ditanyakan</h2>
       </div>
 
-      <div class="space-y-3" x-data="{ open: null }">
+      <div class="space-y-3" x-data="{ open: null, faqs: faqData }">
 
         <template x-for="(item, i) in faqs" :key="i">
           <div class="bg-white rounded-2xl border border-line overflow-hidden">
@@ -685,16 +685,28 @@
       {
         q: 'Apakah ada batasan modul Odoo yang bisa digunakan?',
         a: 'Tidak ada batasan modul Community. Anda bebas menginstal dan menggunakan semua modul Odoo 19 Community yang tersedia. Jika memerlukan modul Enterprise, silakan hubungi kami untuk diskusi lebih lanjut.'
+      },
+      {
+        q: 'Apa yang terjadi setelah masa trial 7 hari berakhir?',
+        a: 'Setelah trial berakhir, tenant Anda dibekukan sementara — data tidak dihapus. Anda punya waktu 7 hari untuk berlangganan agar layanan kembali aktif. Jika tidak diperpanjang dalam 7 hari, data akan dihapus permanen dan tidak bisa dipulihkan.'
+      },
+      {
+        q: 'Bisakah upgrade atau downgrade plan?',
+        a: 'Bisa, kapan saja melalui portal OdooInstant. Perubahan plan berlaku di awal siklus penagihan berikutnya. Semua data, konfigurasi, dan modul yang sudah terpasang tetap utuh saat pindah plan.'
+      },
+      {
+        q: 'Bisakah install modul atau addon custom?',
+        a: 'Bisa di paket Standard dan Pro. Anda bisa upload file modul (.zip) sendiri melalui menu Apps di Odoo, atau hubungi tim kami untuk bantuan instalasi. Paket Basic tidak mendukung modul custom.'
+      },
+      {
+        q: 'Apakah ada backup otomatis? Bagaimana cara restore?',
+        a: 'Paket Standard mendapat backup mingguan, paket Pro mendapat backup harian. Backup disimpan selama 30 hari. Untuk restore, hubungi tim support via WhatsApp — proses biasanya selesai dalam 1–2 jam kerja.'
+      },
+      {
+        q: 'Apakah ada diskon untuk pembayaran tahunan?',
+        a: 'Ya. Dengan berlangganan tahunan Anda hemat setara 2 bulan — cukup bayar 10 bulan, dapat 12 bulan penuh. Hubungi tim kami via WhatsApp atau aktifkan opsi tahunan melalui portal langganan.'
       }
     ];
-
-    // Inject FAQ data to Alpine
-    document.addEventListener('DOMContentLoaded', () => {
-      const faqSection = document.querySelector('#faq [x-data]');
-      if (faqSection) {
-        faqSection.setAttribute('x-data', `{ open: null, faqs: ${JSON.stringify(faqData)} }`);
-      }
-    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
