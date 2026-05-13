@@ -6,24 +6,38 @@
   <title>OdooInstant — Odoo ERP Cloud, Aktif Dalam 2 Menit</title>
   <meta name="description" content="Solusi Odoo ERP cloud paling terjangkau di Indonesia. Aktivasi otomatis, bayar lokal, server Asia. Mulai dari Rp 200.000/bulan.">
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='8' y='8' width='20' height='20' rx='4' fill='%232f5cff'/><rect x='36' y='8' width='20' height='20' rx='4' fill='%232f5cff' opacity='0.35'/><rect x='8' y='36' width='20' height='20' rx='4' fill='%232f5cff' opacity='0.35'/><path d='M36 46 L45 36 L45 43 L56 43 L45 56 L45 49 L36 49 Z' fill='%232f5cff'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          fontFamily: {
+            sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
           colors: {
-            brand: {
-              50:  '#f5f3ff',
-              100: '#ede9fe',
-              200: '#ddd6fe',
-              400: '#a78bfa',
-              500: '#8b5cf6',
-              600: '#7c3aed',
-              700: '#6d28d9',
-              800: '#5b21b6',
-              900: '#4c1d95',
-            }
+            paper:  '#fbfaf6',
+            paper2: '#f3f1ea',
+            ink:    '#18171a',
+            ink2:   '#4a4751',
+            ink3:   '#8a8794',
+            line:   '#e6e3da',
+            indigo: {
+              DEFAULT: '#2f5cff',
+              dark:    '#2249d6',
+            },
+            plum: {
+              DEFAULT: '#1a1530',
+              2:       '#251d44',
+            },
+            lime: '#c7f24a',
           },
           animation: {
             'fade-up': 'fadeUp 0.6s ease forwards',
@@ -40,35 +54,25 @@
     }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; }
 
     .hero-bg {
-      background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 50%, #1e1b4b 100%);
+      background: #1a1530;
     }
     .hero-glow {
-      background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,0.4) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(47,92,255,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(199,242,74,0.06), transparent 60%);
     }
     .card-lift {
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .card-lift:hover {
       transform: translateY(-6px);
-      box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12);
-    }
-    .pricing-glow {
-      box-shadow: 0 0 0 2px #7c3aed, 0 24px 48px -12px rgba(124,58,237,0.3);
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, #a78bfa, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      box-shadow: 0 24px 48px -12px rgba(0,0,0,0.10);
     }
     .step-line::after {
       content: '';
@@ -77,7 +81,7 @@
       left: calc(50% + 3rem);
       right: calc(-50% + 3rem);
       height: 2px;
-      background: linear-gradient(90deg, #ddd6fe, #ede9fe);
+      background: linear-gradient(90deg, rgba(47,92,255,0.2), rgba(47,92,255,0.3), rgba(47,92,255,0.2));
     }
     @media (max-width: 768px) { .step-line::after { display: none; } }
 
@@ -85,45 +89,62 @@
   </style>
 </head>
 
-<body class="antialiased text-gray-900 bg-white">
+<body class="antialiased font-sans text-ink bg-paper">
 
   <!-- ═══════════════════ NAVBAR ═══════════════════ -->
   <nav x-data="{ scrolled: false }" @scroll.window="scrolled = window.scrollY > 20"
-       :class="scrolled ? 'bg-white/95 shadow-sm' : 'bg-transparent'"
-       class="fixed top-0 inset-x-0 z-50 backdrop-blur-sm transition-all duration-300 border-b border-transparent"
-       :class="{ 'border-gray-100': scrolled }">
+       :class="scrolled ? 'bg-paper/95 border-b border-line' : 'bg-transparent border-b border-transparent'"
+       class="fixed top-0 inset-x-0 z-50 backdrop-blur-sm transition-all duration-300">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
       <div class="flex items-center justify-between h-16">
 
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2.5">
-          <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center shadow-md shadow-brand-200">
-            <svg class="w-4.5 h-4.5 text-white" style="width:18px;height:18px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          <!-- Mark: dark surface version (for hero plum) -->
+          <template x-if="!scrolled">
+            <svg viewBox="0 0 64 64" class="w-8 h-8">
+              <rect x="8" y="8" width="20" height="20" rx="4" fill="#fbfaf6"/>
+              <rect x="36" y="8" width="20" height="20" rx="4" fill="#fbfaf6" opacity="0.4"/>
+              <rect x="8" y="36" width="20" height="20" rx="4" fill="#fbfaf6" opacity="0.4"/>
+              <path d="M36 46 L45 36 L45 43 L56 43 L45 56 L45 49 L36 49 Z" fill="#c7f24a"/>
             </svg>
-          </div>
-          <span class="text-[17px] font-extrabold tracking-tight" :class="scrolled ? 'text-gray-900' : 'text-white'">
-            Odoo<span class="text-brand-500">Instant</span>
+          </template>
+          <!-- Mark: light surface version (scrolled) -->
+          <template x-if="scrolled">
+            <svg viewBox="0 0 64 64" class="w-8 h-8">
+              <rect x="8" y="8" width="20" height="20" rx="4" fill="#2f5cff"/>
+              <rect x="36" y="8" width="20" height="20" rx="4" fill="#2f5cff" opacity="0.35"/>
+              <rect x="8" y="36" width="20" height="20" rx="4" fill="#2f5cff" opacity="0.35"/>
+              <path d="M36 46 L45 36 L45 43 L56 43 L45 56 L45 49 L36 49 Z" fill="#2f5cff"/>
+            </svg>
+          </template>
+          <span class="text-[17px] font-extrabold tracking-tight"
+                :class="scrolled ? 'text-ink' : 'text-paper'">
+            Odoo<span :class="scrolled ? 'text-indigo' : 'text-lime'">Instant</span>
           </span>
         </a>
 
         <!-- Links (desktop) -->
         <div class="hidden md:flex items-center gap-7">
-          <a href="#fitur" class="text-sm font-medium transition-colors" :class="scrolled ? 'text-gray-500 hover:text-brand-600' : 'text-white/80 hover:text-white'">Fitur</a>
-          <a href="#cara-kerja" class="text-sm font-medium transition-colors" :class="scrolled ? 'text-gray-500 hover:text-brand-600' : 'text-white/80 hover:text-white'">Cara Kerja</a>
-          <a href="#harga" class="text-sm font-medium transition-colors" :class="scrolled ? 'text-gray-500 hover:text-brand-600' : 'text-white/80 hover:text-white'">Harga</a>
-          <a href="#faq" class="text-sm font-medium transition-colors" :class="scrolled ? 'text-gray-500 hover:text-brand-600' : 'text-white/80 hover:text-white'">FAQ</a>
+          <a href="#fitur" class="text-sm font-medium transition-colors"
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Fitur</a>
+          <a href="#cara-kerja" class="text-sm font-medium transition-colors"
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Cara Kerja</a>
+          <a href="#harga" class="text-sm font-medium transition-colors"
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Harga</a>
+          <a href="#faq" class="text-sm font-medium transition-colors"
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">FAQ</a>
         </div>
 
         <!-- CTA -->
         <div class="flex items-center gap-3">
           <a href="https://app.odooinstant.id/web/login"
              class="hidden md:block text-sm font-semibold transition-colors"
-             :class="scrolled ? 'text-gray-600 hover:text-brand-600' : 'text-white/80 hover:text-white'">
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/80 hover:text-paper'">
             Masuk
           </a>
           <a href="https://app.odooinstant.id/register"
-             class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-brand-900/20 transition-all hover:scale-105">
+             class="bg-lime hover:bg-lime/90 text-plum text-sm font-bold px-5 py-2.5 rounded-xl shadow-[0_4px_12px_rgba(199,242,74,0.25)] transition-all hover:-translate-y-0.5">
             Mulai Gratis
           </a>
         </div>
@@ -137,64 +158,64 @@
     <div class="hero-glow absolute inset-0 pointer-events-none"></div>
 
     <!-- Grid decoration -->
-    <div class="absolute inset-0 opacity-[0.04]"
+    <div class="absolute inset-0 opacity-[0.03]"
          style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px">
     </div>
 
     <!-- Blob decorations -->
-    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-violet-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-indigo/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-lime/8 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-32 text-center">
 
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8 backdrop-blur-sm">
-        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse-slow"></span>
-        <span class="text-white/90 text-sm font-medium">Odoo 19 Community &middot; Server Singapore</span>
+        <span class="w-2 h-2 bg-lime rounded-full animate-pulse-slow" style="box-shadow:0 0 0 4px rgba(199,242,74,0.2)"></span>
+        <span class="text-paper/90 text-sm font-medium">Odoo 19 Community &middot; Server Singapore</span>
       </div>
 
       <!-- Headline -->
-      <h1 class="text-4xl sm:text-5xl lg:text-[64px] font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+      <h1 class="text-4xl sm:text-5xl lg:text-[64px] font-extrabold text-paper leading-[1.0] tracking-[-0.025em] mb-6">
         Odoo ERP Cloud<br>
-        <span class="gradient-text">Aktif Dalam 2 Menit</span>
+        <span class="font-serif italic font-normal text-lime">aktif dalam dua menit.</span>
       </h1>
 
       <!-- Sub -->
-      <p class="text-lg sm:text-xl text-white/65 max-w-2xl mx-auto mb-10 leading-relaxed">
+      <p class="text-lg sm:text-xl text-paper/70 max-w-[520px] mx-auto mb-10 leading-relaxed">
         Kelola bisnis dengan Odoo ERP tanpa ribet setup server.<br class="hidden sm:block">
         Bayar lokal, tenant aktif otomatis, langsung pakai.
       </p>
 
       <!-- Price teaser -->
-      <p class="text-white/50 text-sm mb-10">
-        Mulai dari <strong class="text-white font-bold text-base">Rp 200.000</strong>/bulan &middot; Coba gratis 7 hari &middot; Tidak perlu kartu kredit
+      <p class="text-paper/55 text-sm mb-10">
+        Mulai dari <strong class="text-paper font-bold">Rp 200.000</strong>/bulan &middot; Coba gratis 7 hari &middot; Tidak perlu kartu kredit
       </p>
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
         <a href="https://app.odooinstant.id/register"
-           class="w-full sm:w-auto bg-white hover:bg-gray-50 text-brand-700 font-bold text-base px-8 py-4 rounded-2xl shadow-2xl shadow-brand-900/30 transition-all hover:scale-105 hover:shadow-brand-700/20">
+           class="w-full sm:w-auto bg-lime hover:bg-lime/90 text-plum font-bold text-base px-8 py-4 rounded-2xl shadow-[0_8px_24px_-4px_rgba(199,242,74,0.4)] transition-all hover:-translate-y-0.5">
           Coba Gratis 7 Hari →
         </a>
         <a href="#harga"
-           class="w-full sm:w-auto border border-white/25 hover:border-white/50 hover:bg-white/10 text-white font-semibold text-base px-8 py-4 rounded-2xl transition-all">
+           class="w-full sm:w-auto border border-paper/25 hover:border-paper/50 hover:bg-paper/10 text-paper font-semibold text-base px-8 py-4 rounded-2xl transition-all">
           Lihat Harga
         </a>
       </div>
 
       <!-- Stats strip -->
-      <div class="inline-grid grid-cols-3 gap-0 bg-white/8 border border-white/15 rounded-2xl backdrop-blur-sm overflow-hidden">
+      <div class="inline-grid grid-cols-3 gap-0 bg-paper/5 border border-paper/15 rounded-2xl backdrop-blur-sm overflow-hidden">
         <div class="px-8 py-5">
-          <div class="text-3xl font-extrabold text-white mb-1">&lt; 2 mnt</div>
-          <div class="text-white/50 text-xs font-medium uppercase tracking-wider">Waktu aktivasi</div>
+          <div class="text-3xl font-extrabold text-paper mb-1">&lt; 2 mnt</div>
+          <div class="text-paper/50 text-xs font-mono font-medium uppercase tracking-wider">Waktu aktivasi</div>
         </div>
-        <div class="px-8 py-5 border-x border-white/15">
-          <div class="text-3xl font-extrabold text-white mb-1">99.9%</div>
-          <div class="text-white/50 text-xs font-medium uppercase tracking-wider">Uptime</div>
+        <div class="px-8 py-5 border-x border-paper/15">
+          <div class="text-3xl font-extrabold text-paper mb-1">99.9%</div>
+          <div class="text-paper/50 text-xs font-mono font-medium uppercase tracking-wider">Uptime</div>
         </div>
         <div class="px-8 py-5">
-          <div class="text-3xl font-extrabold text-white mb-1">Rp 0</div>
-          <div class="text-white/50 text-xs font-medium uppercase tracking-wider">Setup fee</div>
+          <div class="text-3xl font-extrabold text-paper mb-1">Rp 0</div>
+          <div class="text-paper/50 text-xs font-mono font-medium uppercase tracking-wider">Setup fee</div>
         </div>
       </div>
 
@@ -202,81 +223,84 @@
   </section>
 
   <!-- ═══════════════════ FEATURES ═══════════════════ -->
-  <section id="fitur" class="py-28 bg-white">
+  <section id="fitur" class="py-28 bg-paper">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">Mengapa OdooInstant</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Dirancang untuk Bisnis Indonesia</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">Semua yang Anda butuhkan untuk mulai dengan Odoo ERP, tanpa hambatan teknis</p>
+        <p class="text-indigo font-semibold text-xs uppercase tracking-[0.16em] mb-3">Mengapa OdooInstant</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight mb-4">
+          Dirancang untuk <span class="font-serif italic font-normal">bisnis Indonesia.</span>
+        </h2>
+        <p class="text-ink2 text-lg max-w-xl mx-auto">Semua yang Anda butuhkan untuk mulai dengan Odoo ERP, tanpa hambatan teknis</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Slab grid — mono indigo icons -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line border border-line rounded-xl overflow-hidden">
 
         <!-- 1 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-brand-100 flex items-center justify-center mb-5 group-hover:bg-brand-600 transition-colors">
-            <svg class="w-5 h-5 text-brand-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Aktivasi Instan</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Selesai bayar, tenant Odoo Anda aktif otomatis dalam hitungan menit. Credential langsung dikirim ke email.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Aktivasi Instan</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Selesai bayar, tenant Odoo Anda aktif otomatis dalam hitungan menit. Credential langsung dikirim ke email.</p>
         </div>
 
         <!-- 2 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-600 transition-colors">
-            <svg class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Isolasi Penuh</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Setiap bisnis punya container Docker dan database PostgreSQL sendiri. Data Anda tidak pernah bercampur.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Isolasi Penuh</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Setiap bisnis punya container Docker dan database PostgreSQL sendiri. Data Anda tidak pernah bercampur.</p>
         </div>
 
         <!-- 3 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5 group-hover:bg-green-600 transition-colors">
-            <svg class="w-5 h-5 text-green-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Bayar Lokal</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Transfer bank, QRIS, GoPay, OVO, hingga kartu kredit — semua tersedia via Midtrans. Tidak perlu kartu luar negeri.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Bayar Lokal</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Transfer bank, QRIS, GoPay, OVO, hingga kartu kredit — semua tersedia via Midtrans. Tidak perlu kartu luar negeri.</p>
         </div>
 
         <!-- 4 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center mb-5 group-hover:bg-orange-500 transition-colors">
-            <svg class="w-5 h-5 text-orange-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Server Asia</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Data center Singapore memberikan latensi rendah untuk seluruh Indonesia. Akses lebih cepat, performa lebih responsif.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Server Asia</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Data center Singapore memberikan latensi rendah untuk seluruh Indonesia. Akses lebih cepat, performa lebih responsif.</p>
         </div>
 
         <!-- 5 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-indigo-100 flex items-center justify-center mb-5 group-hover:bg-indigo-600 transition-colors">
-            <svg class="w-5 h-5 text-indigo-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Odoo Community</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Akuntansi, inventori, penjualan, pembelian, HR, CRM, manufaktur — semua modul Community gratis tanpa biaya lisensi.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Odoo Community</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Akuntansi, inventori, penjualan, pembelian, HR, CRM, manufaktur — semua modul Community gratis tanpa biaya lisensi.</p>
         </div>
 
         <!-- 6 -->
-        <div class="card-lift group p-7 rounded-2xl border border-gray-100 bg-gray-50/50 hover:bg-white">
-          <div class="w-11 h-11 rounded-xl bg-rose-100 flex items-center justify-center mb-5 group-hover:bg-rose-500 transition-colors">
-            <svg class="w-5 h-5 text-rose-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="bg-white p-7 hover:bg-paper transition-colors duration-200">
+          <div class="w-10 h-10 rounded-[10px] bg-indigo/8 text-indigo flex items-center justify-center mb-5">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
           </div>
-          <h3 class="text-[17px] font-bold text-gray-900 mb-2">Support Bahasa Indonesia</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Tim support lokal siap membantu via WhatsApp. Tidak perlu bingung dengan email support berbahasa Inggris.</p>
+          <h3 class="text-[16px] font-bold text-ink mb-2">Support Bahasa Indonesia</h3>
+          <p class="text-ink2 text-[13px] leading-relaxed">Tim support lokal siap membantu via WhatsApp. Tidak perlu bingung dengan email support berbahasa Inggris.</p>
         </div>
 
       </div>
@@ -284,62 +308,62 @@
   </section>
 
   <!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
-  <section id="cara-kerja" class="py-28 bg-gray-50">
+  <section id="cara-kerja" class="py-28 bg-paper2">
     <div class="max-w-5xl mx-auto px-5 sm:px-8">
 
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">Semudah 1-2-3</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Mulai dalam 3 Langkah</h2>
+        <p class="text-indigo font-semibold text-xs uppercase tracking-[0.16em] mb-3">Semudah 1-2-3</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">Mulai dalam 3 Langkah</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 relative">
         <!-- Connector line -->
-        <div class="hidden md:block absolute top-10 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px bg-gradient-to-r from-brand-200 via-brand-300 to-brand-200"></div>
+        <div class="hidden md:block absolute top-10 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px bg-gradient-to-r from-indigo/20 via-indigo/30 to-indigo/20"></div>
 
         <!-- Step 1 -->
-        <div class="text-center relative">
-          <div class="w-20 h-20 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl shadow-brand-200 relative z-10">
+        <div class="text-center relative step-line">
+          <div class="w-20 h-20 bg-plum text-paper rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl relative z-10">
             1
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Pilih Plan</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Pilih paket yang sesuai kebutuhan tim Anda. Basic, Standard, atau Pro.</p>
+          <h3 class="text-lg font-bold text-ink mb-2">Pilih Plan</h3>
+          <p class="text-ink2 text-sm leading-relaxed">Pilih paket yang sesuai kebutuhan tim Anda. Basic, Standard, atau Pro.</p>
         </div>
 
         <!-- Step 2 -->
-        <div class="text-center relative">
-          <div class="w-20 h-20 bg-brand-600 text-white rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl shadow-brand-200 relative z-10">
+        <div class="text-center relative step-line">
+          <div class="w-20 h-20 bg-plum text-paper rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl relative z-10">
             2
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Selesaikan Pembayaran</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Bayar via metode favorit Anda — QRIS, transfer bank, GoPay, atau kartu kredit.</p>
+          <h3 class="text-lg font-bold text-ink mb-2">Selesaikan Pembayaran</h3>
+          <p class="text-ink2 text-sm leading-relaxed">Bayar via metode favorit Anda — QRIS, transfer bank, GoPay, atau kartu kredit.</p>
         </div>
 
         <!-- Step 3 -->
         <div class="text-center relative">
-          <div class="w-20 h-20 bg-green-500 text-white rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl shadow-green-200 relative z-10">
+          <div class="w-20 h-20 bg-lime text-plum rounded-2xl flex items-center justify-center text-3xl font-extrabold mx-auto mb-6 shadow-xl relative z-10">
             <svg class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Tenant Aktif Otomatis</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Dalam 2 menit, Odoo Anda aktif. Credential dikirim ke email. Login, langsung pakai.</p>
+          <h3 class="text-lg font-bold text-ink mb-2">Tenant Aktif Otomatis</h3>
+          <p class="text-ink2 text-sm leading-relaxed">Dalam 2 menit, Odoo Anda aktif. Credential dikirim ke email. Login, langsung pakai.</p>
         </div>
       </div>
 
       <!-- Demo note -->
-      <div class="mt-16 bg-white border border-brand-100 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5 shadow-sm">
-        <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center shrink-0">
-          <svg class="w-6 h-6 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <div class="mt-16 bg-white border border-line rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-indigo/8 text-indigo flex items-center justify-center shrink-0">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
           </svg>
         </div>
         <div>
-          <p class="font-semibold text-gray-900 mb-0.5">Ingin lihat demo dulu?</p>
-          <p class="text-gray-500 text-sm">Hubungi kami via WhatsApp dan kami akan tunjukkan tampilan Odoo secara live, gratis tanpa tekanan.</p>
+          <p class="font-semibold text-ink mb-0.5">Ingin lihat demo dulu?</p>
+          <p class="text-ink2 text-sm">Hubungi kami via WhatsApp dan kami akan tunjukkan tampilan Odoo secara live, gratis tanpa tekanan.</p>
         </div>
         <a href="https://wa.me/62895379262091?text=Halo,%20saya%20ingin%20demo%20OdooInstant"
            target="_blank"
-           class="ml-auto shrink-0 inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap">
+           class="ml-auto shrink-0 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20c45e] text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
@@ -350,162 +374,164 @@
   </section>
 
   <!-- ═══════════════════ PRICING ═══════════════════ -->
-  <section id="harga" class="py-28 bg-white">
+  <section id="harga" class="py-28 bg-paper">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">Harga</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Transparan, Tanpa Biaya Tersembunyi</h2>
-        <p class="text-gray-500 text-lg">Tidak ada setup fee. Tidak ada kontrak. Cancel kapan saja.</p>
+        <p class="text-indigo font-semibold text-xs uppercase tracking-[0.16em] mb-3">Harga</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight mb-4">
+          Transparan, <span class="font-serif italic font-normal">tanpa biaya tersembunyi.</span>
+        </h2>
+        <p class="text-ink2 text-lg">Tidak ada setup fee. Tidak ada kontrak. Cancel kapan saja.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 items-start">
 
         <!-- Basic -->
-        <div class="card-lift rounded-2xl border-2 border-gray-200 p-8 bg-white">
+        <div class="card-lift rounded-2xl border-2 border-line p-8 bg-white">
           <div class="mb-7">
-            <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full mb-3">BASIC</span>
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-1">
+            <span class="inline-block bg-paper2 text-ink2 text-xs font-bold px-3 py-1 rounded-full mb-3">BASIC</span>
+            <h3 class="text-2xl font-extrabold text-ink mb-1">
               Rp 200.000
-              <span class="text-base font-normal text-gray-400">/bulan</span>
+              <span class="text-base font-normal text-ink3">/bulan</span>
             </h3>
-            <p class="text-gray-500 text-sm">Untuk bisnis kecil yang baru memulai</p>
+            <p class="text-ink2 text-sm">Untuk bisnis kecil yang baru memulai</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Hingga 3 pengguna
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               2 GB penyimpanan
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Odoo 19 Community lengkap
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Subdomain gratis (.odooinstant.id)
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Support via email
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-400">
-              <svg class="w-4 h-4 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink3/60">
+              <svg class="w-4 h-4 text-ink3/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               Custom domain
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-400">
-              <svg class="w-4 h-4 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink3/60">
+              <svg class="w-4 h-4 text-ink3/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               Backup otomatis
             </li>
           </ul>
           <a href="https://app.odooinstant.id/register?plan=basic"
-             class="block text-center font-bold text-brand-600 hover:text-white border-2 border-brand-200 hover:border-brand-600 hover:bg-brand-600 py-3.5 rounded-xl transition-all">
+             class="block text-center font-bold text-ink hover:bg-paper2 border-2 border-line py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
         </div>
 
         <!-- Standard (Popular) -->
-        <div class="pricing-glow rounded-2xl p-8 bg-white relative">
+        <div class="rounded-2xl p-8 relative" style="background:#1a1530;color:#fbfaf6;box-shadow:0 24px 48px -16px rgba(26,21,48,0.4);transform:translateY(-8px)">
           <div class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
-            <span class="bg-brand-600 text-white text-xs font-extrabold px-5 py-1.5 rounded-full shadow-lg shadow-brand-300/50 uppercase tracking-wider">
-              ⭐ Paling Populer
+            <span class="bg-lime text-plum text-xs font-extrabold px-5 py-1.5 rounded-full uppercase tracking-wider">
+              ★ Paling Populer
             </span>
           </div>
           <div class="mb-7">
-            <span class="inline-block bg-brand-100 text-brand-700 text-xs font-bold px-3 py-1 rounded-full mb-3">STANDARD</span>
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-1">
+            <span class="inline-block bg-indigo text-paper text-xs font-bold px-3 py-1 rounded-full mb-3">STANDARD</span>
+            <h3 class="text-2xl font-extrabold text-paper mb-1">
               Rp 400.000
-              <span class="text-base font-normal text-gray-400">/bulan</span>
+              <span class="text-base font-normal text-paper/50">/bulan</span>
             </h3>
-            <p class="text-gray-500 text-sm">Untuk bisnis yang sedang berkembang</p>
+            <p class="text-paper/60 text-sm">Untuk bisnis yang sedang berkembang</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Hingga 10 pengguna
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               10 GB penyimpanan
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Odoo 19 Community lengkap
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Subdomain gratis (.odooinstant.id)
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              Support email & WhatsApp
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              Support email &amp; WhatsApp
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Custom domain
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-paper/85">
+              <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Backup mingguan
             </li>
           </ul>
           <a href="https://app.odooinstant.id/register?plan=standard"
-             class="block text-center bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-brand-300/40 hover:shadow-brand-400/50">
+             class="block text-center bg-lime hover:bg-lime/90 text-plum font-bold py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
         </div>
 
         <!-- Pro -->
-        <div class="card-lift rounded-2xl border-2 border-gray-200 p-8 bg-white">
+        <div class="card-lift rounded-2xl border-2 border-line p-8 bg-white">
           <div class="mb-7">
-            <span class="inline-block bg-gray-900 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">PRO</span>
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-1">
+            <span class="inline-block bg-paper2 text-ink2 text-xs font-bold px-3 py-1 rounded-full mb-3">PRO</span>
+            <h3 class="text-2xl font-extrabold text-ink mb-1">
               Rp 700.000
-              <span class="text-base font-normal text-gray-400">/bulan</span>
+              <span class="text-base font-normal text-ink3">/bulan</span>
             </h3>
-            <p class="text-gray-500 text-sm">Untuk bisnis dengan kebutuhan lebih besar</p>
+            <p class="text-ink2 text-sm">Untuk bisnis dengan kebutuhan lebih besar</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Pengguna tak terbatas
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               30 GB penyimpanan
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Odoo 19 Community lengkap
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Subdomain gratis (.odooinstant.id)
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Support prioritas (WA langsung)
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Custom domain
             </li>
-            <li class="flex items-center gap-3 text-sm text-gray-700">
-              <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li class="flex items-center gap-3 text-sm text-ink">
+              <svg class="w-4 h-4 text-indigo shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               Backup harian
             </li>
           </ul>
           <a href="https://app.odooinstant.id/register?plan=pro"
-             class="block text-center font-bold text-brand-600 hover:text-white border-2 border-brand-200 hover:border-brand-600 hover:bg-brand-600 py-3.5 rounded-xl transition-all">
+             class="block text-center font-bold text-ink hover:bg-paper2 border-2 border-line py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
         </div>
       </div>
 
-      <p class="text-center text-gray-400 text-sm mt-8 flex items-center justify-center gap-2">
+      <p class="text-center text-ink3 text-sm mt-8 flex items-center justify-center gap-2">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         7 hari gratis &middot; Tidak perlu kartu kredit &middot; Cancel kapan saja &middot; Data bisa diekspor
       </p>
@@ -513,22 +539,22 @@
   </section>
 
   <!-- ═══════════════════ FAQ ═══════════════════ -->
-  <section id="faq" class="py-28 bg-gray-50">
+  <section id="faq" class="py-28 bg-paper2">
     <div class="max-w-3xl mx-auto px-5 sm:px-8">
 
       <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">FAQ</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Pertanyaan yang Sering Ditanyakan</h2>
+        <p class="text-indigo font-semibold text-xs uppercase tracking-[0.16em] mb-3">FAQ</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">Pertanyaan yang Sering Ditanyakan</h2>
       </div>
 
       <div class="space-y-3" x-data="{ open: null }">
 
         <template x-for="(item, i) in faqs" :key="i">
-          <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+          <div class="bg-white rounded-2xl border border-line overflow-hidden">
             <button @click="open = open === i ? null : i"
                     class="w-full flex items-center justify-between px-6 py-5 text-left gap-4">
-              <span class="font-semibold text-gray-900 text-[15px]" x-text="item.q"></span>
-              <svg :class="open === i ? 'rotate-180 text-brand-600' : 'text-gray-400'"
+              <span class="font-semibold text-ink text-[15px]" x-text="item.q"></span>
+              <svg :class="open === i ? 'rotate-180 text-indigo' : 'text-ink3'"
                    class="w-5 h-5 shrink-0 transition-transform duration-200"
                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
@@ -538,7 +564,7 @@
                  x-transition:enter="transition ease-out duration-200"
                  x-transition:enter-start="opacity-0 -translate-y-2"
                  x-transition:enter-end="opacity-100 translate-y-0"
-                 class="px-6 pb-5 text-gray-500 text-sm leading-relaxed border-t border-gray-100"
+                 class="px-6 pb-5 text-ink2 text-sm leading-relaxed border-t border-line"
                  x-cloak>
               <p class="pt-4" x-text="item.a"></p>
             </div>
@@ -547,12 +573,6 @@
 
       </div>
 
-      <script>
-        document.addEventListener('alpine:init', () => {
-          Alpine.data('faqs', () => []) // placeholder, actual data below
-        })
-      </script>
-
     </div>
   </section>
 
@@ -560,41 +580,42 @@
   <section class="hero-bg relative overflow-hidden py-24">
     <div class="hero-glow absolute inset-0 pointer-events-none"></div>
     <div class="relative max-w-3xl mx-auto px-5 sm:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-paper tracking-tight mb-4">
         Siap Memulai?<br>Aktif Dalam 2 Menit.
       </h2>
-      <p class="text-white/65 text-lg mb-10">
+      <p class="text-paper/65 text-lg mb-10">
         Tidak perlu setup server, tidak perlu IT expert.<br>Pilih plan, bayar, langsung pakai.
       </p>
       <a href="https://app.odooinstant.id/register"
-         class="inline-block bg-white hover:bg-gray-50 text-brand-700 font-extrabold text-lg px-10 py-4 rounded-2xl shadow-2xl shadow-black/20 transition-all hover:scale-105">
+         class="inline-block bg-lime hover:bg-lime/90 text-plum font-extrabold text-lg px-10 py-4 rounded-2xl shadow-[0_8px_24px_-4px_rgba(199,242,74,0.4)] transition-all hover:-translate-y-0.5">
         Coba Gratis 7 Hari →
       </a>
-      <p class="text-white/40 text-sm mt-5">Tidak perlu kartu kredit &middot; Cancel kapan saja</p>
+      <p class="text-paper/40 text-sm mt-5">Tidak perlu kartu kredit &middot; Cancel kapan saja</p>
     </div>
   </section>
 
   <!-- ═══════════════════ FOOTER ═══════════════════ -->
-  <footer class="bg-gray-950 text-gray-500 py-14">
+  <footer class="bg-ink text-ink3 py-14">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
 
         <!-- Brand col -->
         <div class="lg:col-span-2">
           <div class="flex items-center gap-2.5 mb-4">
-            <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-              <svg class="text-white" style="width:18px;height:18px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <span class="text-[17px] font-extrabold text-white tracking-tight">Odoo<span class="text-brand-400">Instant</span></span>
+            <svg viewBox="0 0 64 64" class="w-8 h-8">
+              <rect x="8" y="8" width="20" height="20" rx="4" fill="#fbfaf6"/>
+              <rect x="36" y="8" width="20" height="20" rx="4" fill="#fbfaf6" opacity="0.4"/>
+              <rect x="8" y="36" width="20" height="20" rx="4" fill="#fbfaf6" opacity="0.4"/>
+              <path d="M36 46 L45 36 L45 43 L56 43 L45 56 L45 49 L36 49 Z" fill="#c7f24a"/>
+            </svg>
+            <span class="text-[17px] font-extrabold text-paper tracking-tight">Odoo<span class="text-lime">Instant</span></span>
           </div>
           <p class="text-sm leading-relaxed max-w-xs mb-5">
             Hosting Odoo ERP paling terjangkau dan cepat di Indonesia. Aktif dalam menit, dikelola untuk Anda.
           </p>
           <a href="https://wa.me/62895379262091?text=Halo%20OdooInstant"
              target="_blank"
-             class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 text-sm font-semibold transition-colors">
+             class="inline-flex items-center gap-2 text-[#25D366] hover:text-[#20c45e] text-sm font-semibold transition-colors">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -604,29 +625,29 @@
 
         <!-- Produk -->
         <div>
-          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Produk</h4>
+          <h4 class="text-paper font-semibold text-sm mb-4 uppercase tracking-wider">Produk</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="#fitur" class="hover:text-white transition-colors">Fitur</a></li>
-            <li><a href="#harga" class="hover:text-white transition-colors">Harga</a></li>
-            <li><a href="#cara-kerja" class="hover:text-white transition-colors">Cara Kerja</a></li>
-            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="https://app.odooinstant.id" class="hover:text-white transition-colors">Login Portal</a></li>
+            <li><a href="#fitur" class="hover:text-paper transition-colors">Fitur</a></li>
+            <li><a href="#harga" class="hover:text-paper transition-colors">Harga</a></li>
+            <li><a href="#cara-kerja" class="hover:text-paper transition-colors">Cara Kerja</a></li>
+            <li><a href="#faq" class="hover:text-paper transition-colors">FAQ</a></li>
+            <li><a href="https://app.odooinstant.id" class="hover:text-paper transition-colors">Login Portal</a></li>
           </ul>
         </div>
 
         <!-- Legal -->
         <div>
-          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal</h4>
+          <h4 class="text-paper font-semibold text-sm mb-4 uppercase tracking-wider">Legal</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="#" class="hover:text-white transition-colors">Syarat &amp; Ketentuan</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">SLA</a></li>
+            <li><a href="#" class="hover:text-paper transition-colors">Syarat &amp; Ketentuan</a></li>
+            <li><a href="#" class="hover:text-paper transition-colors">Kebijakan Privasi</a></li>
+            <li><a href="#" class="hover:text-paper transition-colors">SLA</a></li>
           </ul>
         </div>
 
       </div>
 
-      <div class="border-t border-gray-800/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <div class="border-t border-ink2/30 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <p>&copy; 2026 OdooInstant. Layanan hosting Odoo Community di Indonesia.</p>
         <p>Odoo adalah merek dagang dari Odoo S.A. OdooInstant tidak berafiliasi dengan Odoo S.A.</p>
       </div>
@@ -668,11 +689,6 @@
     ];
 
     // Inject FAQ data to Alpine
-    document.addEventListener('alpine:init', () => {
-      Alpine.store('faqData', faqData);
-    });
-
-    // Re-render FAQ section with data
     document.addEventListener('DOMContentLoaded', () => {
       const faqSection = document.querySelector('#faq [x-data]');
       if (faqSection) {
