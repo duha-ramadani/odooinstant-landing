@@ -134,6 +134,8 @@
              :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Demo</a>
           <a href="#harga" class="text-sm font-medium transition-colors"
              :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Harga</a>
+          <a href="#bandingkan" class="text-sm font-medium transition-colors"
+             :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">Bandingkan</a>
           <a href="#faq" class="text-sm font-medium transition-colors"
              :class="scrolled ? 'text-ink2 hover:text-indigo' : 'text-paper/70 hover:text-paper'">FAQ</a>
         </div>
@@ -558,6 +560,188 @@
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         7 hari gratis &middot; Tidak perlu kartu kredit &middot; Cancel kapan saja &middot; Data bisa diekspor
       </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ COMPARISON ═══════════════════ -->
+  <section id="bandingkan" class="py-28 bg-plum relative overflow-hidden">
+    <!-- Subtle grid decoration -->
+    <div class="absolute inset-0 opacity-[0.04]"
+         style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px">
+    </div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-5xl mx-auto px-5 sm:px-8">
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <p class="text-lime font-semibold text-xs uppercase tracking-[0.16em] mb-3">Perbandingan</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-paper tracking-tight mb-4">
+          Kenapa Tidak Langsung <span class="font-serif italic font-normal text-lime">di Odoo.com?</span>
+        </h2>
+        <p class="text-paper/60 text-lg max-w-xl mx-auto">Hitung sendiri berapa yang harus Anda bayar untuk mendapatkan fitur yang sama.</p>
+      </div>
+
+      <!-- Interactive Calculator -->
+      <div x-data="{
+        users: 5,
+        get odooStandardMonth() { return this.users * 110000 },
+        get odooCustomMonth() { return (this.users * 170000) + 925000 },
+        get odooInstantMonth() {
+          if (this.users <= 3) return 200000;
+          if (this.users <= 10) return 400000;
+          return 700000;
+        },
+        get odooInstantPlan() {
+          if (this.users <= 3) return 'Basic';
+          if (this.users <= 10) return 'Standard';
+          return 'Pro';
+        },
+        get savings() { return this.odooCustomMonth - this.odooInstantMonth },
+        get savingsPercent() { return Math.round((this.savings / this.odooCustomMonth) * 100) },
+        formatRp(n) { return 'Rp ' + n.toLocaleString('id-ID') }
+      }">
+
+        <!-- Slider -->
+        <div class="bg-white/8 border border-white/15 backdrop-blur-sm rounded-2xl p-7 mb-8">
+          <div class="flex items-center justify-between mb-5">
+            <label class="font-semibold text-paper text-[15px]">Jumlah pengguna di bisnis Anda</label>
+            <span class="text-3xl font-extrabold text-lime tabular-nums" x-text="users + ' user'"></span>
+          </div>
+          <input type="range" min="1" max="20" x-model.number="users"
+                 class="w-full h-2 rounded-full appearance-none cursor-pointer mb-4"
+                 style="accent-color:#c7f24a;background:rgba(255,255,255,0.15)">
+          <div class="relative h-4 mt-1">
+            <span class="absolute left-0 text-xs text-paper/40 font-mono">1</span>
+            <span class="absolute text-xs text-paper/40 font-mono -translate-x-1/2" style="left:21.1%">5</span>
+            <span class="absolute text-xs text-paper/40 font-mono -translate-x-1/2" style="left:47.4%">10</span>
+            <span class="absolute text-xs text-paper/40 font-mono -translate-x-1/2" style="left:73.7%">15</span>
+            <span class="absolute right-0 text-xs text-paper/40 font-mono">20</span>
+          </div>
+        </div>
+
+        <!-- 3 Cards -->
+        <div class="grid md:grid-cols-3 gap-5 mb-8">
+
+          <!-- Odoo Standard -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div class="text-[10px] font-bold text-paper/40 uppercase tracking-widest mb-1">Odoo Standard</div>
+            <div class="text-[11px] text-paper/30 mb-5">odoo.com</div>
+            <div class="text-2xl font-extrabold text-paper mb-1 tabular-nums" x-text="formatRp(odooStandardMonth)"></div>
+            <div class="text-[11px] text-paper/40 mb-6">/bulan &middot; <span x-text="users"></span> user &times; Rp&nbsp;110.000</div>
+            <ul class="space-y-2.5 text-sm">
+              <li class="flex items-center gap-2.5 text-paper/70">
+                <svg class="w-4 h-4 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Semua modul Odoo
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                <span class="text-red-400 font-semibold">Custom modul tidak bisa</span>
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/40">
+                <svg class="w-4 h-4 text-red-400/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                Wajib kartu kredit
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/40">
+                <svg class="w-4 h-4 text-red-400/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                Support Bahasa Inggris
+              </li>
+            </ul>
+          </div>
+
+          <!-- Odoo Custom + Odoo.sh -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div class="text-[10px] font-bold text-paper/40 uppercase tracking-widest mb-1">Odoo Custom + Odoo.sh</div>
+            <div class="text-[11px] text-paper/30 mb-5">odoo.com + odoo.sh</div>
+            <div class="text-2xl font-extrabold text-paper mb-1 tabular-nums" x-text="formatRp(odooCustomMonth)"></div>
+            <div class="text-[11px] text-paper/40 mb-6">/bulan &middot; <span x-text="users"></span> user &times; Rp&nbsp;170rb + Rp&nbsp;925rb server</div>
+            <ul class="space-y-2.5 text-sm">
+              <li class="flex items-start gap-2.5 text-paper/70">
+                <svg class="w-4 h-4 text-green-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  Custom modul tersedia
+                  <div class="text-[11px] text-paper/35 mt-0.5">Biaya pengembangan mulai <span class="text-paper/55 font-semibold">Rp 14.875.000 / 25 jam</span> via Success Pack</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                <span class="text-red-400 font-semibold">Kelola server sendiri</span>
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/40">
+                <svg class="w-4 h-4 text-red-400/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                Wajib kartu kredit
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/40">
+                <svg class="w-4 h-4 text-red-400/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                Support Bahasa Inggris
+              </li>
+            </ul>
+          </div>
+
+          <!-- OdooInstant WINNER -->
+          <div class="rounded-2xl p-6 relative" style="background:linear-gradient(135deg,rgba(47,92,255,0.25),rgba(47,92,255,0.10));border:2px solid #c7f24a;box-shadow:0 0 40px rgba(199,242,74,0.12)">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="bg-lime text-plum text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap">
+                ✓ Paling Hemat
+              </span>
+            </div>
+            <div class="text-[10px] font-bold text-lime uppercase tracking-widest mb-1">OdooInstant</div>
+            <div class="text-[11px] text-paper/40 mb-5">odooinstant.id</div>
+            <div class="text-2xl font-extrabold text-lime mb-1 tabular-nums" x-text="formatRp(odooInstantMonth)"></div>
+            <div class="text-[11px] text-paper/40 mb-6">/bulan &middot; Plan <span x-text="odooInstantPlan"></span>, harga flat</div>
+            <ul class="space-y-2.5 text-sm">
+              <li class="flex items-start gap-2.5 text-paper/85">
+                <svg class="w-4 h-4 text-lime shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <div>
+                  Custom modul tersedia
+                  <div class="text-[11px] text-lime/60 mt-0.5">Jasa terpisah mulai <span class="text-lime font-semibold">Rp 1.500.000</span> — jauh lebih hemat</div>
+                </div>
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/85">
+                <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Server dikelola oleh kami
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/85">
+                <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Transfer lokal / QRIS / GoPay
+              </li>
+              <li class="flex items-center gap-2.5 text-paper/85">
+                <svg class="w-4 h-4 text-lime shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Support WhatsApp Indonesia
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Savings banner -->
+        <div class="bg-lime/10 border border-lime/30 rounded-2xl p-6 text-center">
+          <p class="text-paper/60 text-sm mb-2">
+            Dengan <strong class="text-paper" x-text="users + ' user'"></strong> yang mau pakai custom modul, Anda hemat vs Odoo Custom + Odoo.sh:
+          </p>
+          <p class="text-2xl sm:text-4xl font-extrabold text-lime tabular-nums break-all" x-text="formatRp(savings) + '/bulan'"></p>
+          <p class="text-paper/50 text-sm mt-2">
+            Setara <span class="font-bold text-paper" x-text="savingsPercent + '%'"></span> lebih murah untuk fitur yang setara
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Fine print -->
+      <p class="text-center text-paper/25 text-xs mt-8 leading-relaxed">
+        OdooInstant menggunakan Odoo 19 Community (open-source, gratis). Odoo.com menggunakan Odoo Enterprise (berbayar lisensi).<br>
+        Harga Odoo.sh dihitung minimum 1 worker $57.60/bln &times; kurs Rp&nbsp;16.000. Odoo adalah merek dagang Odoo S.A. OdooInstant tidak berafiliasi dengan Odoo S.A.<br>
+        <span class="text-paper/20">Sumber: </span>
+        <a href="https://www.odoo.com/id_ID/pricing" target="_blank" rel="noopener"
+           class="text-paper/30 hover:text-paper/50 underline underline-offset-2 transition-colors">odoo.com/pricing</a>
+        <span class="text-paper/15 mx-1">&middot;</span>
+        <a href="https://www.odoo.com/id_ID/pricing-packs" target="_blank" rel="noopener"
+           class="text-paper/30 hover:text-paper/50 underline underline-offset-2 transition-colors">odoo.com/pricing-packs</a>
+        <span class="text-paper/15 mx-1">&middot;</span>
+        <a href="https://www.odoo.sh/pricing" target="_blank" rel="noopener"
+           class="text-paper/30 hover:text-paper/50 underline underline-offset-2 transition-colors">odoo.sh/pricing</a>
+      </p>
+
     </div>
   </section>
 
