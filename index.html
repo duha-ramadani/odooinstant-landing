@@ -87,6 +87,15 @@
 
     [x-cloak] { display: none !important; }
   </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H34B6D09B0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H34B6D09B0');
+  </script>
 </head>
 
 <body class="antialiased font-sans text-ink bg-paper">
@@ -148,6 +157,7 @@
             Masuk
           </a>
           <a href="https://app.odooinstant.id/saas/register"
+             onclick="gtag('event', 'generate_lead', {'location': 'navbar'})"
              class="bg-lime hover:bg-lime/90 text-plum text-sm font-bold px-5 py-2.5 rounded-xl shadow-[0_4px_12px_rgba(199,242,74,0.25)] transition-all hover:-translate-y-0.5">
             Mulai Gratis
           </a>
@@ -198,6 +208,7 @@
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
         <a href="https://app.odooinstant.id/saas/register"
+           onclick="gtag('event', 'generate_lead', {'location': 'hero'})"
            class="w-full sm:w-auto bg-lime hover:bg-lime/90 text-plum font-bold text-base px-8 py-4 rounded-2xl shadow-[0_8px_24px_-4px_rgba(199,242,74,0.4)] transition-all hover:-translate-y-0.5">
           Coba Gratis 7 Hari →
         </a>
@@ -453,6 +464,7 @@
             </li>
           </ul>
           <a href="https://app.odooinstant.id/saas/register?plan=basic"
+             onclick="gtag('event', 'generate_lead', {'location': 'pricing_basic'})"
              class="block text-center font-bold text-ink hover:bg-paper2 border-2 border-line py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
@@ -504,6 +516,7 @@
             </li>
           </ul>
           <a href="https://app.odooinstant.id/saas/register?plan=standard"
+             onclick="gtag('event', 'generate_lead', {'location': 'pricing_standard'})"
              class="block text-center bg-lime hover:bg-lime/90 text-plum font-bold py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
@@ -550,6 +563,7 @@
             </li>
           </ul>
           <a href="https://app.odooinstant.id/saas/register?plan=pro"
+             onclick="gtag('event', 'generate_lead', {'location': 'pricing_pro'})"
              class="block text-center font-bold text-ink hover:bg-paper2 border-2 border-line py-3.5 rounded-xl transition-all">
             Mulai Sekarang
           </a>
@@ -794,6 +808,7 @@
         Tidak perlu setup server, tidak perlu IT expert.<br>Pilih plan, daftar gratis, langsung pakai.
       </p>
       <a href="https://app.odooinstant.id/saas/register"
+         onclick="gtag('event', 'generate_lead', {'location': 'bottom_cta'})"
          class="inline-block bg-lime hover:bg-lime/90 text-plum font-extrabold text-lg px-10 py-4 rounded-2xl shadow-[0_8px_24px_-4px_rgba(199,242,74,0.4)] transition-all hover:-translate-y-0.5">
         Coba Gratis 7 Hari →
       </a>
